@@ -6,6 +6,8 @@ The class will have a handler function, which automatically chooses which reader
 New file types can then be added by expanding the class with new reading methods and adding them 
 to the handler function. Alternatively the correct reading function can be chosen directly.
 '''
+import os
+import numpy as np
 
 class ReadData:
     def __init__(self):
@@ -26,7 +28,7 @@ class ReadData:
             return None, None
 
         lines = []
-        with open(path_to_filename, 'r') as fid:
+        with open(path_to_file, 'r') as fid:
             for line in fid:
                 lines.append(line)
         
@@ -36,13 +38,14 @@ class ReadData:
             data_names = np.asarray(lines[0].split(','))
             data_start_row = 1
         
-        data = np.zeros((len(lines)-start_idx, len(data_names)), dtype = np.float)
-        for idx in range(len(lines)-start_idx):
-            data[idx, :] = np.asarray(lines[idx + start_idx].split(',')).astype(np.float)
+        data = np.zeros((len(lines)-data_start_row, len(data_names)), dtype = np.float)
+        for idx in range(len(lines)-data_start_row):
+            data[idx, :] = np.asarray(lines[idx + data_start_row].split(',')).astype(np.float)
 
         return data_names, data
 
 def main():
+    print("Hello World")
     test_class = ReadData()
 
     path_to_file = '/mnt/c/Users/Philipp/Documents/exxcellent_solutions/prog_chllng_eXXcellent_sol/resources/weather.csv'
@@ -50,5 +53,5 @@ def main():
     print(data_names)
     print(data)
 
-if __name__ is '__main__':
+if __name__ == '__main__':
     main()
