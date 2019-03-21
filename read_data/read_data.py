@@ -174,7 +174,6 @@ class ReadData:
             for line in fid:
                 # Use the rstrip method inbuilt in python to remove newline and trailing whitespace
                 lines.append(line.rsplit('\n')[0])
-                print(lines[-1])
         
         # Create the variable to store the column names in and a counter variable, 
         # marking whether the first line was taken as headline or not
@@ -202,7 +201,7 @@ def main():
     path_to_file = '/mnt/c/Users/Philipp/Documents/exxcellent_solutions/prog_chllng_eXXcellent_sol/resources/weather.csv'
     data_names, data = test_class.read_csv(path_to_file, True)
     print(data_names)
-    print(data)
+    #print(data)
 
 if __name__ == '__main__':
     main()
