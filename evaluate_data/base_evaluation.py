@@ -58,7 +58,7 @@ class EvalData:
             print('The type for the column {0} is not supported!'.format(col))
             return None
 
-    def get_smallest_diff(self, col1, col2, return_col=None):
+    def get_smallest_diff(self, col1, col2, return_col=None, use_abs=True):
         '''
         Return the smallest difference value between 2 columns of the dataset in the class
         The columns can be integer indices or the names of the columns.
@@ -78,6 +78,8 @@ class EvalData:
         min_val = 100000
         for i in range(len(data_col1)):
             diff = data_col1[i] - data_col2[i]
+            if use_abs:
+                diff = abs(diff)
             if diff < min_val:
                 min_idx = i
                 min_val = diff

@@ -16,10 +16,10 @@ def path_concat(path_name, file_name):
     return path_name + file_name
 
 resource_path = '/mnt/c/Users/Philipp/Documents/exxcellent_solutions/prog_chllng_eXXcellent_sol/resources'
-dataset = 'weather.csv'
+dataset = 'football.csv'
 
-column1 = 'MxT'
-column2 = 'MnT'
+column1 = 'Goals'
+column2 = 'Goals Allowed'
 
 def main():
     data_reader = ReadData()
@@ -29,8 +29,8 @@ def main():
     eval_class = EvalData(data_names, data)
 
     smallest_row = eval_class.get_smallest_diff(column1, column2, 0)
-
-    print('The smallest temperature difference was at: {0}'.format(smallest_row))
+    print('Dataset: {0}'.format(dataset))
+    print('The smallest difference between {0} and {1} was at: {2}'.format(column1, column2, smallest_row))
 
 if __name__ == '__main__':
     main()
